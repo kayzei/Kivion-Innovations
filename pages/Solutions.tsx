@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { 
+  CheckCircle2, ExternalLink,
   BarChart3, Cloud, Music, FlaskConical, Camera, 
   Settings, Users, ShoppingCart, Activity, FileText, Play, Pause, SkipForward,
   CreditCard, Wifi
@@ -368,6 +369,103 @@ const Solutions: React.FC = () => {
           )}
 
         </div>
+
+        {/* FEATURED PROJECTS SECTION */}
+        <div className="mt-24">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-white mb-4">Featured Projects & Impact</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              Beyond our lab experiments, we build production-ready solutions that solve real-world challenges across the continent.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "KVI Cloud Suite",
+                description: "A comprehensive cloud infrastructure platform designed specifically for the unique connectivity and cost requirements of African SMEs.",
+                image: "https://picsum.photos/seed/cloud/800/600",
+                benefits: [
+                  "99.9% uptime in low-bandwidth regions",
+                  "Localized data residency compliance",
+                  "Integrated IoT monitoring capabilities"
+                ],
+                tag: "Enterprise"
+              },
+              {
+                title: "Indimba Music Ecosystem",
+                description: "The first truly artist-centric streaming and royalty management platform in Zambia, empowering local creators with transparent data.",
+                image: "https://picsum.photos/seed/music/800/600",
+                benefits: [
+                  "Instant royalty distribution via mobile money",
+                  "Advanced artist analytics dashboard",
+                  "Offline-first playback for rural areas"
+                ],
+                tag: "Entertainment"
+              },
+              {
+                title: "Smart Health Lab (CEDRIC)",
+                description: "A digital transformation initiative for medical laboratories, automating sample tracking and result delivery to reduce human error.",
+                image: "https://picsum.photos/seed/health/800/600",
+                benefits: [
+                  "85% reduction in result turnaround time",
+                  "Automated SMS/Email patient notifications",
+                  "Secure, encrypted medical record storage"
+                ],
+                tag: "Healthcare"
+              },
+              {
+                title: "AgriTech Connect",
+                description: "An IoT-driven platform that provides small-scale farmers with real-time soil moisture and weather data to optimize crop yields.",
+                image: "https://picsum.photos/seed/farm/800/600",
+                benefits: [
+                  "Precision irrigation scheduling",
+                  "Direct-to-market logistics integration",
+                  "Pest and disease early warning system"
+                ],
+                tag: "Agriculture"
+              }
+            ].map((project, idx) => (
+              <div key={idx} className="bg-kvi-900/30 border border-kvi-800 rounded-3xl overflow-hidden group hover:border-kvi-500/50 transition-all duration-500">
+                <div className="aspect-video overflow-hidden relative">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-kvi-950/80 backdrop-blur-md text-kvi-400 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full border border-kvi-800">
+                      {project.tag}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-white mb-3 flex items-center justify-between">
+                    {project.title}
+                    <ExternalLink size={18} className="text-slate-500 group-hover:text-kvi-400 transition-colors" />
+                  </h3>
+                  <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div className="space-y-3 mb-8">
+                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Key Benefits</h4>
+                    {project.benefits.map((benefit, bIdx) => (
+                      <div key={bIdx} className="flex items-start space-x-3">
+                        <CheckCircle2 size={16} className="text-kvi-500 mt-0.5 shrink-0" />
+                        <span className="text-slate-300 text-sm">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <button className="w-full py-3 bg-kvi-800 hover:bg-kvi-500 text-white rounded-xl text-sm font-bold transition-all duration-300">
+                    View Case Study
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </div>
   );
